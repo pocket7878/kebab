@@ -1,6 +1,6 @@
 # Kebab
 
-Common Lisp string PascalCase <=> camelCase <=> snake_case <=> kebab-case(lisp-case) converter.
+Common Lisp string,symbol,keyword PascalCase <=> camelCase <=> snake_case <=> kebab-case(lisp-case) converter.
 
 ## Usage
 
@@ -30,11 +30,6 @@ Common Lisp string PascalCase <=> camelCase <=> snake_case <=> kebab-case(lisp-c
 - to-pascal-case
 - to-kebab-case
 - to-lisp-case
-
-## ToDo
-
-- Support keyword
-- Support symbol
 
 ## Author
 

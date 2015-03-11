@@ -86,11 +86,21 @@
                (mapcar rest-fn (cdr splited-string))))
         (funcall head-fn (car splited-string)))))
 
+(defun save-type-convert-case (val head-fn rest-fn separator)
+  (etypecase val
+    (string (convert-case val head-fn rest-fn separator))
+    (keyword
+     (let ((name (symbol-name val)))
+       (make-keyword (convert-case name head-fn rest-fn separator))))
+    (symbol
+     (let ((name (symbol-name val)))
+       (symbolicate (convert-case name head-fn rest-fn separator))))))
+
 (defmacro define-converter (case-name head-fn rest-fn sep)
   (let ((str-gen (gensym)))
     `(defun ,(symbolicate (string-upcase
                            (format nil "to-~A" case-name))) (,str-gen)
-       (convert-case ,str-gen ,head-fn ,rest-fn ,sep))))
+       (save-type-convert-case ,str-gen ,head-fn ,rest-fn ,sep))))
 
 (define-converter pascal-case #'string-capitalize #'string-capitalize "")
 (define-converter camel-case  #'string-downcase #'string-capitalize "")
