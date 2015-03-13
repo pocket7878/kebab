@@ -23,7 +23,7 @@
   :components ((:module "src"
                 :components
                 ((:file "kebab"))))
-  :description ""
+  :description "Common Lisp string,symbol,keyword PascalCase <=> camelCase <=> snake_case <=> kebab-case(lisp-case) converter."
   :long-description
   #.(with-open-file (stream (merge-pathnames
                              #p"README.markdown"
