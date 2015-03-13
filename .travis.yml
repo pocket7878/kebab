@@ -1,0 +1,15 @@
+language: lisp
+
+env:
+  matrix:
+    - LISP=sbcl
+    - LISP=ccl
+    - LISP=clisp
+
+install:
+  - curl https://raw.githubusercontent.com/luismbo/cl-travis/master/install.sh | bash
+
+script:
+  - cl -l prove
+       -e '(or (prove:run :kebab-test)
+               (uiop:quit -1))'
