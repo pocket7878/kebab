@@ -16,7 +16,7 @@
   :components ((:module "t"
                 :components
                 ((:test-file "kebab"))))
-
+  :description "kebab's test asdf-system"
   :defsystem-depends-on (:prove-asdf)
   :perform (test-op :after (op c)
                     (funcall (intern #.(string :run-test-system) :prove-asdf) c)
