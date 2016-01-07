@@ -55,7 +55,7 @@
                   (is (to-pascal-case '|lisp-case|) '|LispCase|)
                   (is (to-pascal-case '|com plexSt_-ring|) '|ComPlexStRing|)))
 
-(subtest "Test snakel_case"
+(subtest "Test snake_case"
          (subtest "Test on string"
                   (is (to-snake-case "PascalCase") "pascal_case")
                   (is (to-snake-case "camelCase") "camel_case")
@@ -100,6 +100,29 @@
                   (is (to-kebab-case '|kebab-case|) '|kebab-case|)
                   (is (to-kebab-case '|lisp-case|) '|lisp-case|)
                   (is (to-kebab-case '|com plexSt_-ring|) '|com-plex-st-ring|)))
+
+(subtest "Test macro-case"
+         (subtest "Test on string"
+                  (is (to-macro-case "PascalCase") "PASCAL_CASE")
+                  (is (to-macro-case "camelCase") "CAMEL_CASE")
+                  (is (to-macro-case "snake_case") "SNAKE_CASE")
+                  (is (to-macro-case "kebab-case") "KEBAB_CASE")
+                  (is (to-macro-case "lisp-case") "LISP_CASE")
+                  (is (to-macro-case "com plexSt_-ring") "COM_PLEX_ST_RING"))
+         (subtest "Test on keyword"
+                  (is (to-macro-case :|PascalCase|) :PASCAL_CASE)
+                  (is (to-macro-case :|camelCase|) :CAMEL_CASE)
+                  (is (to-macro-case :|snake_case|) :SNAKE_CASE)
+                  (is (to-macro-case :|kebab-case|) :KEBAB_CASE)
+                  (is (to-macro-case :|lisp-case|) :LISP_CASE)
+                  (is (to-macro-case :|com plexSt_-ring|) :COM_PLEX_ST_RING))
+         (subtest "Test on symbol"
+                  (is (to-macro-case '|PascalCase|) 'PASCAL_CASE)
+                  (is (to-macro-case '|camelCase|) 'CAMEL_CASE)
+                  (is (to-macro-case '|snake_case|) 'SNAKE_CASE)
+                  (is (to-macro-case '|kebab-case|) 'KEBAB_CASE)
+                  (is (to-macro-case '|lisp-case|) 'LISP_CASE)
+                  (is (to-macro-case '|com plexSt_-ring|) 'COM_PLEX_ST_RING)))
 
 (subtest "Test lisp-case"
          (subtest "Test on string"

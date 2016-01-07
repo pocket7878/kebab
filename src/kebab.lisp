@@ -8,6 +8,7 @@
            :to-snake-case
            :to-pascal-case
            :to-kebab-case
+           :to-macro-case
            :to-lisp-case))
 
 (in-package :kebab)
@@ -106,5 +107,6 @@
 (define-converter camel-case  #'string-downcase #'string-capitalize "")
 (define-converter snake-case #'string-downcase #'string-downcase "_")
 (define-converter kebab-case #'string-downcase #'string-downcase "-")
+(define-converter macro-case #'string-upcase #'string-upcase "_")
 (define-converter lisp-case #'string-downcase #'string-downcase "-")
 
